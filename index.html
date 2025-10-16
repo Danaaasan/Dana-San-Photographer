@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дана Сан | Фотограф и блогер</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Dana San Visuals</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#booking">Запись</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Дана Сан</h1>
+            <p>Фотограф & Блогер</p>
+            <p>Создаю кадры с душой</p>
+            <a href="#portfolio" class="btn">Смотреть портфолио</a>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title", style="color:black">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Привет, я Дана Сан!</h3>
+                    <p>Я ваш фотограф и создатель визуального контента. Мне нравится снимать всё: от портретов и пейзажей до динамичных сцен городской жизни. Каждый кадр для меня - это возможность рассказать историю, передать эмоции и запечатлеть мгновение, которое больше никогда не повторится.</p>
+                    <p>Как блогер и тиктокер, я делюсь своим творческим процессом, советами по фотографии и вдохновляющими историями из моей работы. Мой подход к фотографии сочетает техническое мастерство с художественным видением, создавая образы, которые остаются с вами надолго.</p>
+                    <p>Работаю в различных жанрах: портретная съемка, fashion, street photography и концептуальные проекты. Люблю экспериментировать со светом, композицией и настроением, создавая уникальные визуальные нарративы.</p>
+                    <a href="#booking" class="btn">Записаться на съемку</a>
+                </div>
+                <div class="profile-img">
+                    <img src="pic/me1.JPG" alt="Дана Сан">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Портфолио</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item"> <img src="pic/ph1.JPG" alt="Портреты"></div>
+                <div class="portfolio-item"><img src="pic/ph2.JPG" alt="Street Photography"></div>
+                <div class="portfolio-item"><img src="pic/ph3.PNG" alt="Fashion"></div>
+                <div class="portfolio-item"><img src="pic/ph4.JPG" alt="Концептуальные проекты"></div>
+                <div class="portfolio-item"><img src="pic/ph5.jpg" alt="Пейзажи"></div>
+                <div class="portfolio-item"><img src="pic/ph6.JPG" alt="События"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Запись -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <h2 class="section-title", style="color:black">Запись на съемку</h2>
+            <div class="booking-content">
+                <div class="booking-text">
+                    <h3>Давайте создадим что-то уникальное вместе!</h3>
+                    <p>Готовы запечатлеть ваши особенные моменты? Я предлагаю индивидуальный подход к каждой съемке, учитывая ваши пожелания и идеи. Заполните форму, и я свяжусь с вами в ближайшее время для обсуждения деталей.</p>
+                    <p>Доступны различные пакеты услуг - от коротких портретных сессий до полноценных фотосессий на целый день.</p>
+                </div>
+                <form class="booking-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="input" id="email" >
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Опишите вашу идею для съемки</label>
+                        <textarea id="message"></textarea>
+                    </div>
+                    <button type="button" class="btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contact">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/dana_san.visuals" target="_blank"><img src="pic/inst.png" alt="Inst"></a>
+                <a href="https://www.tiktok.com/@danasan_nunasan"><img src="pic/tikto.png" alt="TikTok"></a>
+                <a href="https://www.tiktok.com/@danasan__?_t=ZN-90ZW5naEzfm&_r=1"><img src="pic/tikto.png" alt="TikTok"></a>
+            </div>
+            <p>Свяжитесь со мной для сотрудничества</p>
+            <p>Email: danakorbut5@gmail.com</p>
+            <div class="copyright">
+                &copy; 2025 Дана Сан. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
