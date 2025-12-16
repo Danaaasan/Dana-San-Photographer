@@ -11,6 +11,13 @@
     <header>
         <div class="nav-container">
             <div class="logo">Dana San Visuals</div>
+            <!-- Кнопка гамбургер -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <ul class="nav-menu">
                 <li><a href="#home">Главная</a></li>
                 <li><a href="#about">Обо мне</a></li>
@@ -20,6 +27,7 @@
             </ul>
         </div>
     </header>
+
 
     <!-- Главный баннер -->
     <section class="hero" id="home">
@@ -34,7 +42,7 @@
     <!-- Обо мне -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title", style="color:black">Обо мне</h2>
+            <h2 class="section-title" style="color:black">Обо мне</h2>
             <div class="about-content">
                 <div class="about-text">
                     <h3>Привет, я Дана Сан!</h3>
@@ -83,7 +91,7 @@
         </div>
     </section>
 
-        <!-- Разделитель между advantages и portfolio -->
+            <!-- Разделитель между advantages и portfolio -->
     <div class="wave-divider advantages-to-portfolio"></div>
 
     <!-- Портфолио -->
@@ -212,26 +220,31 @@
                     <p>Готовы запечатлеть ваши особенные моменты? Я предлагаю индивидуальный подход к каждой съемке, учитывая ваши пожелания и идеи. Заполните форму, и я свяжусь с вами в ближайшее время для обсуждения деталей.</p>
                     <p>Доступны различные пакеты услуг - от коротких портретных сессий до полноценных фотосессий на целый день.</p>
                 </div>
-                <form class="booking-form">
+                <form class="booking-form" 
+                action="https://getform.io/f/bkkekqxb" 
+                method="POST">
                     <div class="form-group">
                         <label for="name">Ваше имя</label>
-                        <input type="text" id="name" >
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="input" id="email" >
+                        <input type="input" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="social-link">Социальная сеть (inst/telegram) </label>
+                        <input type="input" id="social-link" name="social-link" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон</label>
-                        <input type="tel" id="phone">
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Опишите вашу идею для съемки</label>
-                        <textarea id="message"></textarea>
+                        <textarea id="message" name="message" ></textarea>
                     </div>
-                    <button type="button" class="btn">Отправить заявку</button>
+                   <button type="submit" class="btn">Отправить заявку</button>
                 </form>
-            </div>
         </div>
     </section>
 
@@ -240,7 +253,7 @@
         <div class="container">
             <div class="social-links">
                 <a href="https://www.tiktok.com/@danasan_nunasan"><img src="pic/tikto.png" alt="TikTok"></a>
-                <a href="https://www.instagram.com/dana_san.visuals" target="_blank"><img src="pic/inst.png" alt="Inst"></a>
+                <a href="https://www.instagram.com/dana_san.visuals"><img src="pic/inst.png" alt="Inst"></a>
                 <a href="https://www.threads.com/@_dana_san_?igshid=NTc4MTIwNjQ2YQ=="><img src="pic/threads.png" alt="Threads"></a>
             </div>
             <div class="copyright">
@@ -248,6 +261,8 @@
             </div>
         </div>
     </footer>
+    
+
     <script src="script.js"></script>
 </body>
 </html>

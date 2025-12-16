@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -12,23 +14,64 @@
     --black: #000000;
     --white: #ede9d9;
     --light-text: #f5f5f5;
+    --container-padding: 20px;
+    --grid-gap: 25px;
+    --section-padding: 30px 30px; /* ВЕРХ/НИЗ: 60px, БОКИ: 30px */
 }
 
 body {
     background-color: var(--soft-white);
     color: var(--black);
-    line-height: 1.6;
+    line-height: 1.5;
     overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
-/* Навигация */
+/* ОБЩИЕ СТИЛИ ДЛЯ ВСЕХ СЕКЦИЙ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+}
+
+section {
+    padding: var(--section-padding);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 0px;     
+    margin-bottom: 40px;  
+    color: var(--soft-white);
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    
+}
+
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: var(--wine);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Навигация - ФИКСИРОВАННАЯ СЕТКА */
 header {
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     width: 100%;
     z-index: 1000;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 12px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .nav-container {
@@ -37,34 +80,35 @@ header {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--container-padding);
+    width: 100%;
 }
 
 .logo {
-    font-family: 'Lucida Sans Unicode';
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
     color: var(--white);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-}
+    gap: 25px;
+    padding: 12px 0;
 
-.nav-menu li {
-    margin-left: 30px;
 }
 
 .nav-menu a {
     color: var(--light-text);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
     transition: color 0.3s ease;
     position: relative;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .nav-menu a:hover {
@@ -76,7 +120,7 @@ header {
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: -5px;
+    bottom: -3px;
     left: 0;
     background-color: var(--black);
     transition: width 0.3s ease;
@@ -97,201 +141,192 @@ header {
         linear-gradient(rgba(25, 21, 75, 0.3), rgba(86, 5, 25, 0.5)),
         url('pic/me.JPG') no-repeat center center/cover;
     padding-bottom: 40px;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: 0;
     color: var(--white);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
 }
 
 .hero p {
-    font-size: 1.5rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
     color: var(--white);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
     margin-bottom: 0;
+    font-weight: 500;
 }
 
 .btn {
     display: inline-block;
     background-color: var(--wine);
     color: var(--light-text);
-    padding: 12px 30px;
+    padding: 10px 25px;
     border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .btn:hover {
     background-color: var(--purple);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Секции */
-section {
-    padding: 50px 50px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    color: var(--soft-white);
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 3px;
-    background-color: var(--wine);
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
- /* Обо мне */
+/* Обо мне - ЕДИНАЯ СЕТКА */
 .about {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+
+
 .about-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
     align-items: center;
-    gap: 50px;
 }
 
 .about-text {
-    flex: 1;
+    padding: 0;
+    
 }
 
 .about-text h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
     color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
 .about-text p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-align: justify;
 }
 
 .profile-img {
-    flex: 1;
-    max-height: 600px; /* Ограничиваем максимальную ширину */
-    border-radius: 10px;
+    height: 550px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
 }
 
 .profile-img img {
-    height: 100%;
+    width: 100%;
     height: auto;
     display: block;
 }
 
-/* Преимущества */
+/* Преимущества - ЧЕТКАЯ СЕТКА */
 .advantages {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 80px 20px;
 }
 
 .advantages .section-title {
     color: var(--black);
+    font-weight: 700;
 }
 
 .advantages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    margin-top: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
+    margin-top: 40px;
 }
 
 .advantage-card {
     background: rgba(255, 255, 255, 0.9);
-    padding: 40px 30px;
-    border-radius: 15px;
+    padding: 30px;
+    border-radius: 12px;
     position: relative;
     transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
 }
 
 .advantage-card:hover {
     background: var(--white);
     border-color: var(--wine);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .advantage-number {
-    font-size: 4rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     color: var(--wine);
     opacity: 0.2;
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 15px;
+    right: 20px;
     line-height: 1;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .advantage-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--black);
-    margin-bottom: 15px;
-    font-weight: 600;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .advantage-content p {
     color: var(--black);
-    line-height: 1.6;
-    font-size: 1.1rem;
+    line-height: 1.5;
+    font-size: 1rem;
     margin: 0;
     opacity: 0.9;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
-/* ПОРТФОЛИО */
+/* ПОРТФОЛИО - ЧЕТКАЯ СЕТКА 2х3 */
 .portfolio {
     background-color: rgba(26, 26, 46, 0.9);
     padding: 0 0 10px;
 }
 
+.portfolio .section-title {
+    font-weight: 700;
+}
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
 }
 
 .portfolio-item {
-    height: 500px;
-    border-radius: 15px;
+    height: 300px;
+    border-radius: 12px;
     overflow: hidden;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
 
 .portfolio-item:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .portfolio-item img {
@@ -312,7 +347,7 @@ section {
     right: 0;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     color: white;
-    padding: 30px 20px 20px;
+    padding: 20px;
     transform: translateY(10px);
     opacity: 0;
     transition: all 0.3s ease;
@@ -324,105 +359,141 @@ section {
 }
 
 .portfolio-text h3 {
-    margin: 0 0 10px;
-    font-size: 1.4rem;
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
 .portfolio-text p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.4;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 10px;
+    border-radius: 8px;
     object-fit: cover;
 }
 
-/* Программы */
-.software {
-    background-color: rgba(26, 26, 46, 0.9);
-    padding: 80px 20px;
+.wave-divider {
+    position: relative;
+    height: 80px;
+    overflow: hidden;
+    background: transparent;
+    margin: 0;
+    padding: 0;
 }
 
-.software.section-title{
+/* Разделитель от advantages к portfolio */
+.wave-divider.advantages-to-portfolio {
+    background: rgba(0, 0, 0, 0.3); /* Фон advantages */
+}
+
+.wave-divider.advantages-to-portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background: rgba(26, 26, 46, 0.85);
+    border-radius: 80% 80% 0 0; /* Верхние углы скруглены */
+    transform: scaleX(1.2); /* Растягиваем по ширине для плавности */
+}
+
+/* Программы - ЧЕТКАЯ СЕТКА */
+.software {
+    background-color: rgba(26, 26, 46, 0.9);
+}
+
+.software .section-title {
     margin-top: 0;
-    margin-bottom: 40px; /* Уменьшаем нижний отступ */
+    margin-bottom: 30px;
     position: relative;
+    font-weight: 700;
 }
 
 .software-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
+    margin-top: 40px;
 }
 
 .software-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
 }
 
 .software-card:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--purple);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .software-icon {
-    height: 200px;
-    width: 100%; /* если нужно растянуть по ширине */
+    height: 180px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* чтобы картинка не вылазила */
+    overflow: hidden;
 }
 
 .software-icon img {
     width: 100%;
     height: 100%;
-    object-fit: cover;   /* картинка заполняет блок */
-    object-position: center; /* центрируем */
+    object-fit: cover;
+    object-position: center;
 }
 
 .software-content {
-    padding: 30px;
+    padding: 25px;
 }
 
 .software-content h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--soft-white);
-    margin-bottom: 15px;
-    font-weight: 600;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .software-content p {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
-    margin-bottom: 20px;
-    font-size: 1rem;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
 .software-features {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .software-features span {
     background: rgba(255, 255, 255, 0.1);
     color: var(--soft-white);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 18px;
+    font-size: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
 .software-card:hover .software-features span {
@@ -430,41 +501,45 @@ img {
     border-color: var(--purple);
 }
 
-/* Запись */
 .booking {
     background-color: rgba(0, 0, 0, 0.3);
+    padding: 60px 20px;
 }
 
 .booking-content {
-    display: flex;
-    gap: 50px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* текст и форма по 50% */
+    gap: 40px;
+    align-items: center;        /* вертикальное центрирование */
+    justify-content: center;  /* форма не растягивается по высоте */
 }
 
 .booking-text {
-    flex: 1;
+    text-align: left;   /* текст выравнивается по левому краю */
+    max-width: 100%;
 }
 
 .booking-text h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
+    font-size: 2rem;
+    margin-bottom: 20px;
     color: var(--black);
-    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
 .booking-text h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
     color: var(--wine);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
-.booking-form {
-    flex: 1;
-    background-color: rgba(114, 47, 55, 0.2);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.booking-text p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-bottom: 15px;
+    text-align: justify; /* растягиваем абзацы по ширине */
 }
 
 .form-group {
@@ -493,9 +568,34 @@ img {
     resize: vertical;
 }
 
+.success-popup {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: var(--wine);
+    color: var(--light-text);
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: right 0.4s ease;
+    z-index: 9999;
+}
+
+.success-popup.show {
+    right: 20px;
+}
+
+.input-error {
+    border: 2px solid red !important;
+}
+
+
+/* Футер */
 footer {
     background-color: var(--black);
-    padding: 50px 20px 20px;
+    padding: 50px var(--container-padding) 20px;
     text-align: center;
 }
 
@@ -529,500 +629,161 @@ footer {
     margin-top: 20px;
     color: #aaa;
     font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
-/* Волнообразные разделители между секциями */
-.wave-divider {
-    position: relative;
-    height: 80px;
-    overflow: hidden;
-    background: transparent;
-    margin: 0;
-    padding: 0;
+
+/* Кнопка бургер */
+.hamburger {
+    display: none; /* по умолчанию скрыта на десктопе */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
 }
 
-/* Разделитель от advantages к portfolio */
-.wave-divider.advantages-to-portfolio {
-    background: rgba(0, 0, 0, 0.3); /* Фон advantages */
-}
-
-.wave-divider.advantages-to-portfolio::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.hamburger span {
+    display: block;
+    height: 3px;
     width: 100%;
-    height: 120%;
-    background: rgba(26, 26, 46, 0.85);
-    border-radius: 80% 80% 0 0; /* Верхние углы скруглены */
-    transform: scaleX(1.2); /* Растягиваем по ширине для плавности */
+    background-color: var(--white);
+    border-radius: 2px;
 }
 
-/* Базовые стили остаются без изменений */
-
-/* Медиа-запросы для адаптивности */
-
-/* Планшеты (от 768px до 1023px) */
-@media (max-width: 1023px) {
-    /* Навигация */
-    .nav-container {
-        flex-direction: column;
-        padding: 10px 20px;
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* показываем бургер */
     }
-    
-    .logo {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-    }
-    
+
     .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-    
-    .nav-menu li {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-    
-    /* Главный баннер */
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-    
-    .hero p {
-        font-size: 1.3rem;
-    }
-
-    .btn{
-        justify-self: center;
-    }
-    
-    /* Секции */
-    section {
-        padding: 60px 20px;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    /* Обо мне */
-    .about-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .profile-img {
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    /* Преимущества */
-    .advantages-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-    }
-    
-    .advantage-card {
-        padding: 30px 25px;
-    }
-    
-    /* Портфолио */
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-    }
-    
-    .portfolio-item {
-        height: 400px;
-    }
-    
-    /* Программы */
-    .software-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
-    }
-    
-    .software-icon {
-        height: 180px;
-    }
-    
-    .software-content {
-        padding: 25px;
-    }
-    
-    .software-content h3 {
-        font-size: 1.3rem;
-    }
-    
-    /* Запись */
-    .booking-content {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .booking-form {
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-}
-
-/* Телефоны (до 767px) */
-@media (max-width: 767px) {
-    .nav-container{
-        height: 30px;
-    }
-    /* Навигация */
-    .logo {
-        font-size: 1.3rem;
-    }
-    
-    .nav-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(0,0,0,0.9);
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-    }
-    
-    .nav-menu li {
-        margin: 5px 0;
-    }
-    
-    .nav-menu a {
-        font-size: 1rem;
-    }
-    
-    /* Главный баннер */
-    .hero {
-        height: 70vh;
-        padding-bottom: 30px;
-    }
-    
-    .hero h1 {
-        font-size: 2.2rem;
-        padding: 0 15px;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-        padding: 0 15px;
-    }
-    
-    .btn {
-        padding: 10px 25px;
-        font-size: 1rem;
-        justify-self: center;
-    }
-    
-    /* Секции */
-    section {
-        padding: 50px 15px;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 40px;
-    }
-    
-    .container {
-        padding: 0 10px;
-    }
-    
-    /* Обо мне */
-    .about-text h3 {
-        font-size: 1.5rem;
-    }
-    
-    .about-text p {
-        font-size: 1rem;
-    }
-    
-    .profile-img {
-        height: 300px;
-        width: 100%;
-    }
-    
-    /* Преимущества */
-    .advantages-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .advantage-card {
-        padding: 25px 20px;
-    }
-    
-    .advantage-number {
-        font-size: 3.5rem;
-        top: 15px;
-        right: 20px;
-    }
-    
-    .advantage-content h3 {
-        font-size: 1.3rem;
-    }
-    
-    .advantage-content p {
-        font-size: 1rem;
-    }
-    
-    /* Портфолио */
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .portfolio-item {
-        height: 350px;
-    }
-    
-    .portfolio-text {
-        padding: 20px 15px 15px;
-    }
-    
-    .portfolio-text h3 {
-        font-size: 1.2rem;
-    }
-    
-    .portfolio-text p {
-        font-size: 0.9rem;
-    }
-    
-    /* Программы */
-    .software-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .software-icon {
-        height: 150px;
-    }
-    
-    .software-content {
+        width: 200px;
         padding: 20px;
+        gap: 20px;
+        display: none; /* скрыто по умолчанию */
     }
-    
-    .software-content h3 {
-        font-size: 1.2rem;
-        margin-bottom: 12px;
-    }
-    
-    .software-content p {
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-    }
-    
-    .software-features {
-        gap: 8px;
-    }
-    
-    .software-features span {
-        padding: 5px 10px;
-        font-size: 0.8rem;
-    }
-    
-    /* Запись */
-    .booking-text h2 {
-        font-size: 2rem;
-        margin-bottom: 40px;
-    }
-    
-    .booking-text h3 {
-        font-size: 1.5rem;
-    }
-    
-    .booking-form {
-        padding: 25px 20px;
-    }
-    
-    .form-group {
-        margin-bottom: 15px;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        padding: 10px;
-        font-size: 0.95rem;
-    }
-    
-    .form-group textarea {
-        height: 100px;
-    }
-    
-    /* Футер */
-    .social-links {
-        gap: 15px;
-    }
-    
-    .social-links a {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-    }
-    
-    /* Волнообразные разделители */
-    .wave-divider {
-        height: 50px;
-    }
-    
-    .wave-divider.advantages-to-portfolio::before {
-        height: 100%;
-        border-radius: 60% 60% 0 0;
-        transform: scaleX(1.3);
+
+    .nav-menu.active {
+        display: flex; /* показываем при клике */
     }
 }
 
-/* Маленькие телефоны (до 480px) */
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.8rem;
+/* Планшет (до 1024px) */
+@media (max-width: 1024px) {
+    .about-content,
+    .advantages-grid,
+    .portfolio-grid,
+    .software-grid,
+    .booking-content {
+        grid-template-columns: 1fr; /* одна колонка */
     }
-    
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    /* Текст в секциях */ 
+    .about-text p, 
+    .advantages p, 
+    .software-content p,
+    .booking-text p
+     { font-size: 0.95rem; }
+
+    .booking-content {
+        gap: 30px;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.0rem;
+    }
+
     .hero p {
         font-size: 1rem;
     }
-    
-    .section-title {
-        font-size: 1.6rem;
+
+/* Планшет — 2 колонки */
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
+
+    .portfolio-item {
+        height: 350px; /* увеличиваем высоту, чтобы не были низкими */
+    }
+}
+
+
+
+
+}
+
+/* Телефон (до 768px) */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .logo {
+            font-size: 1rem;
+            letter-spacing: 0.8px;
+        }
+    .about-content,
+    .advantages-grid,
+    .portfolio-grid,
+    .software-grid,
+    .booking-content {
+        grid-template-columns: 1fr; /* всё в одну колонку */
+    }
+    /* Текст */ 
+    .about-text p, 
+    .advantages p, 
+    .software-content p, 
+    .booking-text p 
+    { font-size: 0.9rem; }
+
+
+    .profile-img {
+        height: auto;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .about-text h3 {
+        font-size: 1.4rem;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
     .btn {
         padding: 8px 20px;
         font-size: 0.9rem;
     }
-    
-    .profile-img {
-        height: 250px;
-    }
-    
-    .portfolio-item {
-        height: 300px;
-    }
-    
-    .software-icon {
-        height: 130px;
-    }
-    
-    .booking-form {
-        padding: 20px 15px;
-    }
-    
-    .social-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
+
+
 }
 
-/* Большие планшеты и ноутбуки (от 1024px) */
-@media (min-width: 1024px) {
-    /* Дополнительные оптимизации для больших экранов */
-    .nav-container {
-        padding: 0 40px;
-    }
-    
-    section {
-        padding: 100px 40px;
-    }
-}
 
-/* Очень большие экраны */
-@media (min-width: 1400px) {
-    .container {
-        max-width: 1300px;
-    }
-    
-    .hero h1 {
-        font-size: 4rem;
-    }
-    
-    .hero p {
-        font-size: 1.8rem;
-    }
-}
-
-/* Гамбургер-меню для мобильных устройств */
-@media (max-width: 767px) {
-    .nav-menu {
-        display: none;
-        width: 100%;
-        padding-top: 20px;
-    }
-    
-    .nav-menu.active {
-        display: flex;
-    }
-    
-    .hamburger {
-        display: block;
-        cursor: pointer;
-        background: none;
-        border: none;
-        padding: 10px;
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        z-index: 1001;
-    }
-    
-    .hamburger span {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: var(--white);
-        margin: 5px 0;
-        transition: 0.3s;
-    }
-    
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    /* Добавьте в HTML кнопку гамбургера:
-    <button class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    */
-    
-    /* JavaScript для управления меню:
-    document.querySelector('.hamburger').addEventListener('click', function() {
-        this.classList.toggle('active');
-        document.querySelector('.nav-menu').classList.toggle('active');
-    });
-    */
-}
-
-/* Портретная ориентация на телефонах */
-@media (max-width: 767px) and (orientation: portrait) {
-    .hero {
-        height: 60vh;
-    }
-    
-    .portfolio-item {
-        height: 280px;
-    }
-}
-
-/* Альбомная ориентация на телефонах */
-@media (max-width: 900px) and (orientation: landscape) {
-    .hero {
-        height: 80vh;
-    }
-    
-    .nav-menu {
-        flex-direction: row;
-    }
-}
