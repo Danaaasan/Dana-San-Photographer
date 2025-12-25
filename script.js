@@ -1,4 +1,3 @@
-
 // Валидация формы с IMask
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".booking-form");
@@ -13,70 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Маска для белорусского номера
     const phoneMask = IMask(phoneInput, {
         mask: '+375 (00) 000-00-00',
-        lazy: false,          // маска всегда видна
-        placeholderChar: '_'  // символ для пустых позиций
+        lazy: false,
+        placeholderChar: '_'
     });
 
-    // Проверка телефона — просто смотрим, что маска заполнена
+    // Проверка телефона
     function validatePhone() {
         return phoneMask.masked.isComplete;
     }
 
-    // Проверка всей формы
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        let isValid = true;
-
-        // Сбрасываем ошибки
-        document.querySelectorAll(".booking-form input, .booking-form textarea")
-            .forEach(input => input.classList.remove("input-error"));
-
-        // Проверяем обязательные поля
-        ["name", "email", "social-link", "phone"].forEach(id => {
-            const field = document.getElementById(id);
-            if (!field.value.trim()) {
-                field.classList.add("input-error");
-                isValid = false;
-            }
-        });
-
-        // Проверка телефона по маске
-        if (!validatePhone()) {
-            phoneInput.classList.add("input-error");
-            isValid = false;
-        }
-
-        // Если всё ок — показываем сообщение
-        if (isValid) {
-            popup.classList.add("show");
-            setTimeout(() => popup.classList.remove("show"), 3000);
-            form.reset();
-            phoneMask.updateValue(); // сброс маски
-        }
-    });
-});
-
-$(document).ready(function() {
-
-    // 🔽 ПРОСТАЯ МАСКА ТЕЛЕФОНА (оставляем как у тебя)
-    $('#phone').val('+375 (__)-___-__-__');
-
-    $('#phone').on('focus click', function() {
-        if ($(this).val() === '+375 (__)-___-__-__') {
-            $(this).val('+375 (');
-            setTimeout(() => {
-                $(this).get(0).setSelectionRange(7, 7);
-            }, 0);
-        }
-    });
-
-    $('#phone').on('blur', function() {
-        if ($(this).val() === '+375 (' || $(this).val() === '') {
-            $(this).val('+375 (__)-___-__-__');
-        }
-    });
-
-    // 🔽 Плавная прокрутка для навигации
+    // Плавная прокрутка для навигации
     $('a[href^="#"]').on('click', function(e) {
         e.preventDefault();
         const targetId = $(this).attr('href');
@@ -90,7 +35,7 @@ $(document).ready(function() {
         }
     });
 
-    // 🔽 Изменение прозрачности шапки при скролле
+    // Изменение прозрачности шапки при скролле
     $(window).on('scroll', function() {
         const header = $('header');
         if ($(this).scrollTop() > 100) {
@@ -100,63 +45,86 @@ $(document).ready(function() {
         }
     });
 
-    // 🔽 Меню‑бургер
+    // Меню‑бургер
     $('.hamburger').on('click', function() {
         $('.nav-menu').toggleClass('active');
         $(this).toggleClass('active');
     });
 
-    // 🔽 Проверка обязательных полей (без проверки формата телефона)
-    $(".booking-form").on("submit", function(e) {
+    // ОДИН обработчик submit для формы
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
-
         let isValid = true;
 
-        // Сбрасываем все рамки
-        $(".booking-form input, .booking-form textarea").css("border", "");
+        // Сбрасываем ошибки
+        document.querySelectorAll(".booking-form input, .booking-form textarea")
+            .forEach(input => {
+                input.classList.remove("input-error");
+                input.style.border = "";
+                input.style.boxShadow = "";
+            });
 
         // Проверяем обязательные поля
-        let requiredFields = ["#name", "#email", "#social-link", "#phone"];
-
-        requiredFields.forEach(function(selector) {
-            let field = $(selector);
-            let value = $.trim(field.val());
-
-            if (value === "" || value === "+375 (__)-___-__-__") {
-                field.css({
-                    "border": "2px solid #a30808ff",
-                    "box-shadow": "0 0 8px rgba(255, 68, 68, 0.5)",
-                    "outline": "none"
-                });
+        ["name", "email", "social-link", "phone"].forEach(id => {
+            const field = document.getElementById(id);
+            if (!field.value.trim()) {
+                field.classList.add("input-error");
+                field.style.border = "2px solid #560519;";
+                field.style.boxShadow = "0 0 8px #560519;";
                 isValid = false;
             }
         });
 
-        // Если всё ок — отправляем
-        if (isValid) {
-            if ($(".success-popup").length === 0) {
-                $("body").append('<div class="success-popup">Заявка отправлена!</div>');
-            }
-            $(".success-popup").fadeIn(300).delay(3000).fadeOut(300);
+        // Проверка телефона по маске
+        if (!validatePhone()) {
+            phoneInput.classList.add("input-error");
+            phoneInput.style.border = "2px solid #560519;";
+            phoneInput.style.boxShadow = "0 0 8px #560519;";
+            isValid = false;
+        }
 
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: $(this).serialize(),
-                success: function() {
-                    $(".booking-form")[0].reset();
-                    $('#phone').val('+375 (__)-___-__-__');
-                },
-                error: function() {
+        // Если всё ок — отправляем через AJAX
+        if (isValid) {
+            // Показываем сообщение
+            popup.classList.add("show");
+            setTimeout(() => popup.classList.remove("show"), 3000);
+
+            // Отправляем данные на сервер
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Сбрасываем форму
+                    form.reset();
+                    phoneMask.updateValue();
+                    
+                    // Показываем всплывающее сообщение
+                    popup.classList.add("show");
+                    setTimeout(() => popup.classList.remove("show"), 3000);
+                } else {
                     alert("Произошла ошибка при отправке формы");
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Произошла ошибка при отправке формы");
             });
         }
     });
 
-    // 🔽 Убираем подсветку при вводе
+    // Убираем подсветку при вводе
     $(".booking-form input, .booking-form textarea").on("input", function() {
-        $(this).css("border", "");
-        $(this).css("box-shadow", "");
+        $(this).css({
+            "border": "",
+            "box-shadow": ""
+        });
+        $(this).removeClass("input-error");
     });
 });
